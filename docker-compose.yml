@@ -7,7 +7,7 @@ services:
       - "POSTGRES_PASSWORD=postgres"
       - "POSTGRES_USER=postgres"
     ports:
-     - "0.0.0.0:5431:5432"
+      - "0.0.0.0:5431:5432"
   friends_book:
     build: ./friends_book
     working_dir: /friends_book
@@ -20,8 +20,8 @@ services:
     environment:
       - "TZ=America/Los_Angeles"
     volumes:
-      - "./onejobstreet5:/code"
+      - "./friends_book:/friends_book"
     ports:
-     - "0.0.0.0:3000:3000"
+      - "0.0.0.0:3000:3000"
     depends_on:
-     - postgres
+      - postgres

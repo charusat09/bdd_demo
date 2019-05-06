@@ -5,6 +5,7 @@ development:
   database: friends_book_development
   pool:     5
   username: postgres
+  # NOTE: place your credentials at safe place
   password: postgres
   port:     5432
 

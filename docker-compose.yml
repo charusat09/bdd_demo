@@ -1,0 +1,27 @@
+version: '3.0'
+services:
+  postgres:
+    image: postgres:11.0
+    environment:
+      - "TZ=America/Los_Angeles"
+      - "POSTGRES_PASSWORD=postgres"
+      - "POSTGRES_USER=postgres"
+    ports:
+     - "0.0.0.0:5431:5432"
+  friends_book:
+    build: ./friends_book
+    working_dir: /friends_book
+    command: sleep 30000
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10k"
+        max-file: "3"
+    environment:
+      - "TZ=America/Los_Angeles"
+    volumes:
+      - "./onejobstreet5:/code"
+    ports:
+     - "0.0.0.0:3000:3000"
+    depends_on:
+     - postgres
